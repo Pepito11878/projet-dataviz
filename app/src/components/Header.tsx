@@ -1,8 +1,10 @@
+import { NavLink } from "react-router";
+
 export function Header() {
   return (
     <header>
-      <a href="">Accueil</a>
-      <a href="">Analyse</a>
+      <NavLink to="/">Accueil</NavLink>
+      <NavLink to="/Analyse">Analyse</NavLink>
     </header>
   );
 }

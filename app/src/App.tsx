@@ -1,11 +1,14 @@
-import { Header } from "./components/header";
-import { Main } from "./components/Main";
+import { Routes, Route } from "react-router";
+import Home from "./pages/Home";
+import Analyse from "./pages/Analyse";
 
 function App() {
   return (
     <>
-      <Header />
-      <Main />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Analyse" element={<Analyse />} />
+      </Routes>
     </>
   );
 }
