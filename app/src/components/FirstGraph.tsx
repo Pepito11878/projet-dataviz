@@ -22,7 +22,7 @@ interface YearCount {
   count: number;
 }
 
-function countTournagesByYear(results: Result[]): YearCount[] {
+function countFilmingByYear(results: Result[]): YearCount[] {
   const counts: { [year: string]: number } = {};
 
   for (const result of results) {
@@ -65,7 +65,7 @@ export default function FirstGraph() {
   useEffect(function () {
     FetchFilming()
       .then(function (results) {
-        const chartData = countTournagesByYear(results);
+        const chartData = countFilmingByYear(results);
         setData(chartData);
       })
       .catch(function (error) {
