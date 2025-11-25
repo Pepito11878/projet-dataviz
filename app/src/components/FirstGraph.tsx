@@ -85,7 +85,7 @@ export default function FirstGraph() {
         <XAxis dataKey="year" />
         <YAxis />
         <Tooltip />
-        <Line dataKey="count" fill="#8884d8" />
+        <Line type="monotone" dataKey="count" fill="#8884d8" />
       </LineChart>
     </ResponsiveContainer>
   );
