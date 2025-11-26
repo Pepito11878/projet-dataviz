@@ -94,6 +94,13 @@ export default function SecondGraph() {
           data={chartData}
           margin={{ top: 20, right: 30, left: 40, bottom: 80 }}
         >
+          <defs>
+            <linearGradient id="myGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="50%" stopColor="#6A7330" />
+              <stop offset="100%" stopColor="#1A1B0D" />
+            </linearGradient>
+          </defs>
+
           <CartesianGrid strokeDasharray="3 3" />
 
           <XAxis
@@ -109,7 +116,7 @@ export default function SecondGraph() {
           <Tooltip />
           <Legend />
 
-          <Bar dataKey="count" fill="#8884d8">
+          <Bar dataKey="count" fill="url(#myGradient)">
             <LabelList position="top" />
           </Bar>
         </BarChart>
