@@ -2,6 +2,7 @@ import FirstGraph from "../components/FirstGraph";
 import { Header } from "../components/Header";
 import SecondGraph from "../components/SecondGraph";
 import ThirdGraph from "../components/ThirdGraph";
+import { FourthGraph } from "../components/FourthGraph";
 
 export default function Analyse() {
   return (
@@ -16,6 +17,9 @@ export default function Analyse() {
         </div>
         <div className="bg-white p-4 rounded-xl shadow-md w-1/3">
           <ThirdGraph />
+        </div>
+        <div className="bg-white p-4 rounded-xl shadow-md w-1/3">
+          <FourthGraph />
         </div>
       </div>
     </div>
