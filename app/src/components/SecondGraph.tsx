@@ -36,14 +36,21 @@ async function getFilmingByType() {
   return Object.entries(counts).map(([type, count]) => ({ type, count }));
 }
 
-export function SecondGraph() {
+interface SecondGraphProps {
+  onData?: (data: { type: string; count: number }[]) => void;
+}
+
+export function SecondGraph({ onData }: SecondGraphProps) {
   const [data, setData] = useState<{ type: string; count: number }[]>([]);
 
   useEffect(() => {
     getFilmingByType().then((res) => {
-      if (res) setData(res);
+      if (res) {
+        setData(res);
+        if (onData) onData(res); // 🔥 envoie les données au parent
+      }
     });
-  }, []);
+  }, [onData]);
 
   return (
     <div style={{ width: "100%", height: 600 }}>
