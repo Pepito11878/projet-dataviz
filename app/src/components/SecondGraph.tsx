@@ -1,26 +1,16 @@
 import { useEffect, useState } from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Legend,
-  LabelList,
-} from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, LabelList } from "recharts";
 
 interface Result {
   type_tournage: string;
 }
 
-interface ApiResponse {
+interface apiResponce {
   count: number;
   results: Result[];
 }
 
-async function fetchApi(): Promise<ApiResponse | undefined> {
+async function fetchApi(): Promise<apiResponce | undefined> {
   try {
     const api = await fetch(
       "https://opendata.paris.fr/api/explore/v2.1/catalog/datasets/lieux-de-tournage-a-paris/records?limit=100"
@@ -36,22 +26,31 @@ async function getFilmingByType() {
   if (!data) return [];
 
   const counts: Record<string, number> = {};
+
   data.results.forEach((item) => {
     const type = item.type_tournage || "Inconnu";
     counts[type] = (counts[type] || 0) + 1;
   });
 
+  // transformer en tableau pour Recharts
   return Object.entries(counts).map(([type, count]) => ({ type, count }));
 }
 
-export function SecondGraph() {
+interface SecondGraphProps {
+  onData?: (data: { type: string; count: number }[]) => void;
+}
+
+export function SecondGraph({ onData }: SecondGraphProps) {
   const [data, setData] = useState<{ type: string; count: number }[]>([]);
 
   useEffect(() => {
     getFilmingByType().then((res) => {
-      if (res) setData(res);
+      if (res) {
+        setData(res);
+        if (onData) onData(res); // 🔥 envoie les données au parent
+      }
     });
-  }, []);
+  }, [onData]);
 
   return (
     <div style={{ width: "100%", height: 500 }}> {/* Hauteur fixe */}

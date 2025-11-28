@@ -11,7 +11,7 @@ interface YearCount {
 interface ChartItem {
   type: string;
   count: number;
-  percent: number;
+  percent?: number;
 }
 
 interface DirectorCount {
@@ -63,7 +63,7 @@ export function Cards() {
 
       {/* 🔥 Les graphiques envoient leurs données via callbacks, on peut les cacher */}
       <div className="mt-10 hidden">
-      <FirstGraph onData={handleYearData} />
+        <FirstGraph onData={handleYearData} />
         <SecondGraph onData={handleTypeData} />
         <FifthGraph onData={handleDirectorData} />
       </div>
