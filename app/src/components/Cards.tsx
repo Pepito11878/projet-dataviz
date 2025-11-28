@@ -1,7 +1,7 @@
 import { useState } from "react";
-import FirstGraph from "./FirstGraph";
 import SecondGraph from "./SecondGraph";
 import FifthGraph from "./FifthGraph";
+import { FirstGraph } from "./FirstGraph";
 
 interface YearCount {
   year: string;
@@ -63,7 +63,6 @@ export function Cards() {
 
       {/* 🔥 Les graphiques envoient leurs données via callbacks, on peut les cacher */}
       <div className="mt-10 hidden">
-        <FirstGraph onData={handleYearData} />
         <SecondGraph onData={handleTypeData} />
         <FifthGraph onData={handleDirectorData} />
       </div>
