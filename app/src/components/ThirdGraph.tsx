@@ -84,11 +84,11 @@ export default function ThirdGraph() {
   if (loading) return <p>Chargement…</p>;
 
   return (
-    <div style={{ width: "100%", height: "400px" }}>
+    <div style={{ width: "100%", height: "400px", minHeight: 400 }}>
       <h2 style={{ marginBottom: 20, color: "#282b12", textAlign: "center"}}>
         Types de tournage x Année
       </h2>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height={400}>
         <AreaChart data={chartData}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="annee" />

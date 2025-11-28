@@ -148,8 +148,8 @@ const TopRealisateursChart: React.FC<Props> = ({onData }) => {
       </div>
 
       {/* BarChart */}
-      <div className="w-full h-[400px]">
-        <ResponsiveContainer width="100%" height="100%">
+      <div className="w-full h-[400px] min-h[400px]">
+        <ResponsiveContainer width="100%" height={400}>
           <BarChart
             data={data}
             layout="horizontal"
