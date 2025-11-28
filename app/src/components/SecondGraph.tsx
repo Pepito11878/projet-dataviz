@@ -53,15 +53,21 @@ export function SecondGraph({ onData }: SecondGraphProps) {
   }, [onData]);
 
   return (
-    <div style={{ width: "100%", height: 600 }}>
-      <h2 style={{ marginBottom: 20, color: "#282b12", textAlign: "center"}}>
+    <div style={{ width: "100%", height: 500 }}> {/* Hauteur fixe */}
+      <h2
+        style={{
+          marginBottom: 20,
+          color: "#282b12",
+          textAlign: "center",
+        }}
+      >
         Répartition des types de tournages à Paris
       </h2>
 
-      <ResponsiveContainer>
+      <ResponsiveContainer width="100%" height={500}> {/* Hauteur fixe */}
         <BarChart
           data={data}
-          margin={{ top: 20, right: 30, left: 40, bottom: 80 }}
+          margin={{ top: 20, right: 30, left: 40, bottom: 60 }} // bottom réduit pour XAxis incliné
         >
           <defs>
             <linearGradient id="myGradient" x1="0" y1="0" x2="0" y2="1">
@@ -77,7 +83,7 @@ export function SecondGraph({ onData }: SecondGraphProps) {
             angle={-45}
             textAnchor="end"
             interval={0}
-            height={100}
+            height={60} // hauteur suffisante pour les labels inclinés
           />
 
           <YAxis />
