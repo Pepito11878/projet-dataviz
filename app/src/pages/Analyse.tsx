@@ -21,8 +21,9 @@ export default function Analyse() {
         </div>
         <div className="bg-white p-4 rounded-xl shadow-md w-1/3">
           <FourthGraph />
-        <div className="bg-white p-4 rounded-xl shadow-md">
-          <TopRealisateursChart />
+          <div className="bg-white p-4 rounded-xl shadow-md">
+            <TopRealisateursChart />
+          </div>
         </div>
       </div>
     </div>
