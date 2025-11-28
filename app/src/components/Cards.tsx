@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FirstGraph from "./FirstGraph";
 import SecondGraph from "./SecondGraph";
+import FifthGraph from "./FifthGraph";
 
 interface YearCount {
   year: string;
@@ -13,19 +14,28 @@ interface ChartItem {
   percent: number;
 }
 
+interface DirectorCount {
+  name: string;
+  count: number;
+}
+
 export function Cards() {
   const [graphData, setGraphData] = useState<YearCount[]>([]);
   const [typeData, setTypeData] = useState<ChartItem[]>([]);
+  const [directorData, setDirectorData] = useState<DirectorCount[]>([]);
 
   // Callbacks pour récupérer les données
   const handleYearData = (data: YearCount[]) => setGraphData(data);
   const handleTypeData = (data: ChartItem[]) => setTypeData(data);
+  const handleDirectorData = (data: DirectorCount[]) => setDirectorData(data);
 
   // Calculer la moyenne et le total
   const totalTournages = graphData.reduce((sum, item) => sum + item.count, 0);
 
   // Type de tournage le plus fréquent
   const mostFrequentType = typeData.length > 0 ? typeData[0].type : "N/A";
+
+  const topDirector = directorData.length > 0 ? directorData[0].name : "N/A";
 
   return (
     <>
@@ -43,8 +53,9 @@ export function Cards() {
         </p>
 
         <p className="bg-white rounded-lg px-4 py-5 w-72">
-          <strong></strong>
+          <strong>Top réalisateur :</strong>
           <br />
+          {topDirector}
         </p>
 
         <p className="bg-white rounded-lg px-4 py-5 w-72"></p>
@@ -54,6 +65,7 @@ export function Cards() {
       <div className="mt-10 hidden">
         <FirstGraph onData={handleYearData} />
         <SecondGraph onData={handleTypeData} />
+        <FifthGraph onData={handleDirectorData} />
       </div>
     </>
   );

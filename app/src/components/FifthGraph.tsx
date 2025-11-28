@@ -23,6 +23,11 @@ interface TopRealisateur {
   types: string[];
 }
 
+interface DirectorCount {
+  name: string;
+  count: number;
+}
+
 const fetchTournages = async (): Promise<Tournage[]> => {
   const res = await fetch(
     "https://opendata.paris.fr/api/records/1.0/search/?dataset=lieux-de-tournage-a-paris&rows=100"
@@ -48,7 +53,11 @@ const getTopRealisateurs = (tournages: Tournage[]): TopRealisateur[] => {
     .slice(0, 5);
 };
 
-const TopRealisateursChart: React.FC = () => {
+interface Props {
+  onData?: (data: DirectorCount[]) => void;
+}
+
+const TopRealisateursChart: React.FC<Props> = ({onData }) => {
   const [tournages, setTournages] = useState<Tournage[]>([]);
   const [data, setData] = useState<TopRealisateur[]>([]);
   const [anneeFilter, setAnneeFilter] = useState<string>("Tous");
@@ -86,8 +95,19 @@ const TopRealisateursChart: React.FC = () => {
       filtered = filtered.filter((t) => t.fields.type_tournage === typeFilter);
     }
 
-    setData(getTopRealisateurs(filtered));
+    const top5 = getTopRealisateurs (filtered);
+    setData(top5);
+
+   if (onData) {
+      onData(
+        top5.map((r) => ({
+          name: r.nom,
+          count: r.count,
+        }))
+      );
+    }
   }, [tournages, anneeFilter, typeFilter]);
+
 
   return (
     <div className="w-full bg-white rounded-xl shadow p-4">
