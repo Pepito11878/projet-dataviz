@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, LabelList } from "recharts";
 
 interface Result {
   type_tournage: string;
@@ -46,15 +46,41 @@ export function SecondGraph() {
   }, []);
 
   return (
-    <div style={{ width: "100%", height: 400 }}>
-      <h2 style={{ textAlign: "center", marginBottom: 20 }}>Nombre de tournages par type</h2>
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+    <div style={{ width: "100%", height: 600 }}>
+      <h2 style={{ marginBottom: 20, color: "#282b12", textAlign: "center"}}>
+        Répartition des types de tournages à Paris
+      </h2>
+
+      <ResponsiveContainer>
+        <BarChart
+          data={data}
+          margin={{ top: 20, right: 30, left: 40, bottom: 80 }}
+        >
+          <defs>
+            <linearGradient id="myGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="50%" stopColor="#6A7330" />
+              <stop offset="100%" stopColor="#1A1B0D" />
+            </linearGradient>
+          </defs>
+
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="type" />
+
+          <XAxis
+            dataKey="type"
+            angle={-45}
+            textAnchor="end"
+            interval={0}
+            height={100}
+          />
+
           <YAxis />
+
           <Tooltip />
-          <Bar dataKey="count" fill="#6A7330" />
+          <Legend />
+
+          <Bar dataKey="count" fill="url(#myGradient)">
+            <LabelList position="top" />
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
     </div>
