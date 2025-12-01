@@ -1,7 +1,7 @@
 import { FirstGraph } from "../components/FirstGraph";
 import { Header } from "../components/Header";
 import { SecondGraph } from "../components/SecondGraph";
-import ThirdGraph from "../components/ThirdGraph";
+import { ThirdGraph } from "../components/ThirdGraph";
 import { FourthGraph } from "../components/FourthGraph";
 import TopRealisateursChart from "../components/FifthGraph";
 import { Footer } from "../components/Footer";
