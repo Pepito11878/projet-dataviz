@@ -65,7 +65,7 @@ export function SecondGraph({ onData }: SecondGraphProps) {
     getFilmingByType().then((res) => {
       if (res) {
         setData(res);
-        if (onData) onData(res); // 🔥 envoie les données au parent
+        if (onData) onData(res); // envoie les données au parent
       }
     });
   }, [onData]);
@@ -88,7 +88,7 @@ export function SecondGraph({ onData }: SecondGraphProps) {
         {/* Hauteur fixe */}
         <BarChart
           data={data}
-          margin={{ top: 20, right: 30, left: 40, bottom: 60 }} // bottom réduit pour XAxis incliné
+          margin={{ top: 20, right: 30, left: 40, bottom: 60 }} 
         >
           <defs>
             <linearGradient id="myGradient" x1="0" y1="0" x2="0" y2="1">
@@ -104,7 +104,7 @@ export function SecondGraph({ onData }: SecondGraphProps) {
             angle={-45}
             textAnchor="end"
             interval={0}
-            height={60} // hauteur suffisante pour les labels inclinés
+            height={60} 
           />
 
           <YAxis />

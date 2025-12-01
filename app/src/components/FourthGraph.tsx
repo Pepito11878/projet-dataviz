@@ -58,9 +58,9 @@ export function FourthGraph() {
   const counts = countByArrondissement(data!.results);
   const chartData = Object.entries(counts)
     .map(([ardt, count]) => ({ ardt, count }))
-    .sort((a, b) => b.count - a.count); // tri décroissant
+    .sort((a, b) => b.count - a.count); 
 
-  // Couleurs alternées
+
   const colors = ["#6A7330", "#1A1B0D"];
 
   return (
@@ -75,7 +75,7 @@ export function FourthGraph() {
         width={900}
         height={400}
         data={chartData}
-        layout="horizontal" // barres verticales
+        layout="horizontal" 
         margin={{ left: 40, right: 40, top: 20, bottom: 50 }}
       >
         <CartesianGrid strokeDasharray="3 3" />

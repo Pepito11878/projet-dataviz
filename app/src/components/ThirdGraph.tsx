@@ -80,7 +80,7 @@ export function ThirdGraph() {
     loadData();
   }, []);
 
-  const colors = ["#6A7330", "#A3A84F", "#D1D27B", "#8B5E3C", "#C2854A", "#B0B0B0"]; // dernière couleur = Autres
+  const colors = ["#6A7330", "#A3A84F", "#D1D27B", "#8B5E3C", "#C2854A", "#B0B0B0"]; 
 
   return (
     <div style={{ width: "100%", height: 500 }}>
