@@ -9,7 +9,7 @@ export default function Home() {
       <div className="justify-start">
         <Header />
       </div>
-      <div className="flex-grow">
+      <div className="grow">
         <Main />
         <Cards />
       </div>

@@ -43,13 +43,12 @@ async function getFilmingByType() {
   });
 
   // transformer en tableau pour Recharts
-  const arrayData = Object.entries(counts).map(([type, count]) => ({
-    type,
-    count,
-  }));
-
-  // trier par count décroissant
-  arrayData.sort((a, b) => b.count - a.count);
+  const arrayData = Object.entries(counts)
+    .map(([type, count]) => ({
+      type,
+      count,
+    }))
+    .sort((a, b) => b.count - a.count);
 
   return arrayData;
 }
@@ -88,7 +87,7 @@ export function SecondGraph({ onData }: SecondGraphProps) {
         {/* Hauteur fixe */}
         <BarChart
           data={data}
-          margin={{ top: 20, right: 30, left: 40, bottom: 60 }} 
+          margin={{ top: 20, right: 30, left: 40, bottom: 60 }}
         >
           <defs>
             <linearGradient id="myGradient" x1="0" y1="0" x2="0" y2="1">
@@ -104,7 +103,7 @@ export function SecondGraph({ onData }: SecondGraphProps) {
             angle={-45}
             textAnchor="end"
             interval={0}
-            height={60} 
+            height={60}
           />
 
           <YAxis />
